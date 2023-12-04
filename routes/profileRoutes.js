@@ -9,6 +9,7 @@ const authCheck = (req, res, next) => {
 }
 router.get("/", authCheck, (req, res) => {
   //   res.send("profile view- " + req.user.username)
+  console.log(req.session)
   res.render("dashboard", {
     user: req.user,
   })
