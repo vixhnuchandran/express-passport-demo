@@ -13,7 +13,11 @@ router.get("/register", (req, res) => {
 
 // auth logout
 router.get("/logout", (req, res) => {
-  req.logout
+  req.logout(err => {
+    if (err) {
+      console.log("error in logging out")
+    }
+  })
   return res.redirect("/")
 })
 
