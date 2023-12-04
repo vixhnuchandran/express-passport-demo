@@ -18,11 +18,16 @@ app.set("view engine", "ejs")
 app.use(
   session({
     secret: [process.env.sessionKey],
-    maxAge: 24 * 60 * 60 * 1000,
+    cookie: {
+      path: "/",
+      maxAge: 1 * 24 * 60 * 60 * 1000,
+      httpOnly: true,
+    },
     resave: false,
     saveUninitialized: true,
   })
 )
+
 // initialize passport
 app.use(passport.initialize())
 app.use(passport.session())
@@ -33,7 +38,7 @@ app.use("/profile", profileRoutes)
 
 // home route
 app.get("/", (req, res) => {
-  return res.render("home")
+  return res.render("home", { user: req.user })
 })
 // static files
 app.use("/img", express.static(path.resolve(__dirname, "src/images")))
