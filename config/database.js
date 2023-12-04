@@ -9,11 +9,4 @@ const connection = async () => {
   } catch (error) {}
 }
 
-// const UserSchema = new mongoose.Schema({
-//   username: String,
-//   hash: String,
-//   salt: String,
-// })
-// const User = connection.model("User", UserSchema)
-
 module.exports = connection
