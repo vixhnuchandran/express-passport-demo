@@ -11,6 +11,7 @@ require("dotenv").config()
 const app = express()
 
 // view engine setup
+app.set("views", path.join(__dirname, "views"))
 app.set("view engine", "ejs")
 
 // session
@@ -32,7 +33,7 @@ app.use("/profile", profileRoutes)
 
 // home route
 app.get("/", (req, res) => {
-  res.render("home")
+  return res.render("home")
 })
 // static files
 app.use("/img", express.static(path.resolve(__dirname, "src/images")))
